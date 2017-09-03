@@ -32,7 +32,7 @@
     //链接websocket 入口 /api/socket/shu_pv?username={username}如下
 
 
-    var socket = new SockJS('http://shucloud.shu.edu.cn/doc/api/socket/shu_pv?username=zihua');
+    var socket = new SockJS('http://127.0.0.1:8080/api/socket/shu_pv?username=zihua');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
 
@@ -66,10 +66,9 @@
     function sendJson() {
         stompClient.send("/api/socket/app/chat", {}, JSON.stringify(
             {
-                "from":"zihua",
-                "to":"zihua",
-                "content":"hello world nice to meet you !",
-                "time":"1503763200000"
+                "msgSender":"zihua",
+                "msgReceiver":"zihua",
+                "content":"hello world nice to meet you !"
         }));
     }
 
